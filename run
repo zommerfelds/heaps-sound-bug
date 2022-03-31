@@ -1,0 +1,26 @@
+#!/bin/bash
+# https://james-forbes.com/?/posts/alternative-to-npm-scripts#!/posts/alternative-to-npm-scripts
+
+set -e
+
+function buildres() {
+    haxe -hl hxd.fmt.pak.Build.hl -lib heaps -main hxd.fmt.pak.Build
+    hl hxd.fmt.pak.Build.hl -res res/heaps -out build/res
+}
+
+function compiledev() {
+    haxe -D source-map-content build-js.hxml
+}
+
+function compile() {
+    haxe build-js.hxml
+}
+
+if [[ $# -eq 0 ]] ; then
+    echo "Available sub-commands:"
+    declare -F | awk '{print "- "$NF}' | sort | egrep -v "^_" 
+    exit
+fi
+
+# Run a function name in the context of this script
+eval "$@"

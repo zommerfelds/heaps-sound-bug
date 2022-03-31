@@ -1,0 +1,44 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"command": [
+				"haxe",
+				"-D",
+				"source-map-content",
+				"build-js.hxml"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"label": "haxe: shell command"
+		},
+		{
+			"label": "Serve dev version",
+			"type": "shell",
+			// Only watch a single file, otherwise it will reload for each file.
+			"command": "python -c 'import livereload.cli as l; l.main()' -p 8000 --host 0.0.0.0 -t build/game.js.map -w 1",
+			"presentation": {
+				"reveal": "always",
+				"panel": "new"
+			},
+			"runOptions": {
+				"runOn": "folderOpen"
+			}
+		},
+		{
+			"label": "Open Chrome",
+			"type": "shell",
+			"command": "start chrome -ArgumentList --autoplay-policy=no-user-gesture-required,--user-data-dir=C:\\chrome-dev-profile-hexislands,http://localhost:8000/",
+			"presentation": {
+				"reveal": "always",
+				"panel": "new"
+			},
+			"runOptions": {
+				"runOn": "folderOpen"
+			}
+		},
+	]
+}

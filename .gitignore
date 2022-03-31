@@ -1,0 +1,10 @@
+/build
+/build-android
+.tmp
+secret-*
+/save.sav
+/test/output
+
+# Krita backup files:
+*.kra~
+*-autosave.kra
