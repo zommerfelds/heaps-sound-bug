@@ -17,3 +17,9 @@ A small Heaps project template for web-based games.
 * Install dependencies: `haxelib install build-js.hxml`
 * Build the assets package: `bash run buildres`
 * Compile the project: `bash run compile` (or Ctrl+Shift+B in vscode)
+
+## TODO
+
+* Automatically publish to GitHub pages
+* Add a save game template
+* Easily support query params for debugging

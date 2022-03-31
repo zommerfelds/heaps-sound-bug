@@ -11,6 +11,8 @@ class PlayView extends GameState {
 	final playWidth = 9;
 	final playHeight = 16;
 
+	final gameArea = new h2d.Graphics();
+
 	final paddle = new h2d.Graphics();
 	final paddleWidth = 2;
 	final paddleHeight = 0.5;
@@ -30,11 +32,18 @@ class PlayView extends GameState {
 	final resetInteractive = new h2d.Interactive(0, 0);
 
 	override function init() {
-		final gameArea = new h2d.Graphics(this);
-		gameArea.y = height - width * playHeight / playWidth;
-		gameArea.scale(width / playWidth);
+		if (height / width > playHeight / playWidth) {
+			// Width is limiting factor
+			gameArea.scale(width / playWidth);
+			gameArea.y = (height - playHeight * gameArea.scaleY) / 2;
+		} else {
+			// Height is limiting factor
+			gameArea.scale(height / playHeight);
+			gameArea.x = (width - playWidth * gameArea.scaleX) / 2;
+		}
 		gameArea.beginFill(0x330000);
 		gameArea.drawRect(0, 0, playWidth, playHeight);
+		addChild(gameArea);
 
 		final wall = new h2d.Graphics(gameArea);
 		wall.beginFill(0xffffff);
@@ -50,13 +59,13 @@ class PlayView extends GameState {
 		gameArea.addChild(ball);
 
 		pointsText.x = width * 0.5;
-		pointsText.y = width * 0.02;
+		pointsText.y = width * 0.02 + gameArea.y + wallSize * gameArea.scaleY;
 		pointsText.textAlign = Center;
 		this.addChild(pointsText);
 
 		resetText.text = "reset";
 		resetText.x = width - resetText.getBounds().width - width * 0.05;
-		resetText.y = width * 0.02;
+		resetText.y = width * 0.02 + gameArea.y + wallSize * gameArea.scaleY;
 		this.addChild(resetText);
 		resetInteractive.width = resetText.getBounds().width;
 		resetInteractive.height = resetText.getBounds().height;
@@ -67,7 +76,7 @@ class PlayView extends GameState {
 
 		final backText = new Gui.Text("&lt;-", this);
 		backText.x = width * 0.05;
-		backText.y = width * 0.02;
+		backText.y = width * 0.02 + gameArea.y + wallSize * gameArea.scaleY;
 		final backInteractive = new h2d.Interactive(backText.getBounds().width, backText.getBounds().height, backText);
 		backInteractive.onClick = e -> {
 			App.instance.switchState(new MenuView());
@@ -96,7 +105,7 @@ class PlayView extends GameState {
 				}
 			default:
 		}
-		paddle.x = event.relX / width * playWidth;
+		paddle.x = (event.relX - gameArea.x) / gameArea.scaleX;
 	}
 
 	function setRandomBallVel() {
