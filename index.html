@@ -18,16 +18,13 @@
             width: 100%;
             height: 100%;
         }
-
-        canvas#webgl {
-            width: 100%;
-            height: 100%;
-        }
     </style>
 </head>
 
 <body>
-    <canvas id="webgl"></canvas>
+    <!-- NOTE: the width and height style elements must be defined directly in the element
+               below (not in a class) because otherwise Heaps doesn't resize the canvas properly. -->
+    <canvas id="webgl" style="width:100%;height:100%"></canvas>
     <script src="build/game.js"></script>
 </body>
 

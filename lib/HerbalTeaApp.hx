@@ -35,7 +35,6 @@ class HerbalTeaApp extends hxd.App {
 	}
 
 	override function init() {
-
 		// save = hxd.Save.load(new SaveState());
 		// trace("Save: " + App.save);
 		// SaveState.upgradeToLatestVersion(save);
@@ -191,9 +190,7 @@ class HerbalTeaApp extends hxd.App {
 				renderTimeTotAvg = (renderTimeTotAvg * counter + avgRenderTime) / (counter + 1);
 				final drawCalls = engine.drawCalls;
 				counter++;
-				trace(
-					'Perf[$counter] FPS: ${floatToStr(fps)} (${floatToStr(fpsAvg)} avg) updateT: ${floatToStr(avgUpdateTime * 1000)} (${floatToStr(updateTimeTotAvg * 1000)} avg) renderT: ${floatToStr(avgRenderTime * 1000)} (${floatToStr(renderTimeTotAvg * 1000)} avg) draw calls: ${drawCalls}'
-				);
+				trace('Perf[$counter] FPS: ${floatToStr(fps)} (${floatToStr(fpsAvg)} avg) updateT: ${floatToStr(avgUpdateTime * 1000)} (${floatToStr(updateTimeTotAvg * 1000)} avg) renderT: ${floatToStr(avgRenderTime * 1000)} (${floatToStr(renderTimeTotAvg * 1000)} avg) draw calls: ${drawCalls}');
 				haxe.Timer.delay(logStats, 1000);
 			}
 			logStats();
@@ -224,7 +221,7 @@ class HerbalTeaApp extends hxd.App {
 		}
 	}
 
-	function switchState(state:GameState) {
+	public function switchState(state:GameState) {
 		if (currentState != null) {
 			currentState.cleanup();
 
@@ -281,5 +278,15 @@ class HerbalTeaApp extends hxd.App {
 			trace("Number of objects: " + s2d.getObjectsCount());
 		}
 		renderedCurrentState = true;
+	}
+
+	public static function toggleFullScreen() {
+		final window = hxd.Window.getInstance();
+		switch (window.displayMode) {
+			case Fullscreen | FullscreenResize | Borderless:
+				window.displayMode = Windowed;
+			case _:
+				window.displayMode = FullscreenResize;
+		}
 	}
 }

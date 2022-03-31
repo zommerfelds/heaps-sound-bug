@@ -1,6 +1,6 @@
 # Gamejam template
 
-A small Heaps project template for web-based games, with focus on mobile.
+A small Heaps project template for web-based games.
 
 ## Instructions
 

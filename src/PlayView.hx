@@ -30,24 +30,6 @@ class PlayView extends GameState {
 	final resetInteractive = new h2d.Interactive(0, 0);
 
 	override function init() {
-		pointsText.textColor = 0xffffff;
-		pointsText.x = width * 0.05;
-		pointsText.y = width * 0.02 + HerbalTeaApp.cutout.top;
-
-		this.addChild(pointsText);
-
-		resetText.text = "reset";
-		resetText.textColor = 0xffffff;
-		resetText.x = width - resetText.getBounds().width - width * 0.05;
-		resetText.y = width * 0.02 + HerbalTeaApp.cutout.top;
-		this.addChild(resetText);
-		resetInteractive.width = resetText.getBounds().width;
-		resetInteractive.height = resetText.getBounds().height;
-		resetInteractive.onClick = e -> {
-			setupGame();
-		};
-		resetText.addChild(resetInteractive);
-
 		final gameArea = new h2d.Graphics(this);
 		gameArea.y = height - width * playHeight / playWidth;
 		gameArea.scale(width / playWidth);
@@ -66,6 +48,30 @@ class PlayView extends GameState {
 		ball.beginFill(0xffffff);
 		ball.drawRect(-ballSize / 2, -ballSize / 2, ballSize, ballSize);
 		gameArea.addChild(ball);
+
+		pointsText.x = width * 0.5;
+		pointsText.y = width * 0.02;
+		pointsText.textAlign = Center;
+		this.addChild(pointsText);
+
+		resetText.text = "reset";
+		resetText.x = width - resetText.getBounds().width - width * 0.05;
+		resetText.y = width * 0.02;
+		this.addChild(resetText);
+		resetInteractive.width = resetText.getBounds().width;
+		resetInteractive.height = resetText.getBounds().height;
+		resetInteractive.onClick = e -> {
+			setupGame();
+		};
+		resetText.addChild(resetInteractive);
+
+		final backText = new Gui.Text("&lt;-", this);
+		backText.x = width * 0.05;
+		backText.y = width * 0.02;
+		final backInteractive = new h2d.Interactive(backText.getBounds().width, backText.getBounds().height, backText);
+		backInteractive.onClick = e -> {
+			App.instance.switchState(new MenuView());
+		};
 
 		setupGame();
 

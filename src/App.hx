@@ -1,9 +1,11 @@
 class App extends HerbalTeaApp {
+	public static var instance:App;
+
 	static function main() {
-		new App();
+		instance = new App();
 	}
 
 	override function onload() {
-		switchState(new PlayView());
+		switchState(new MenuView());
 	}
 }
