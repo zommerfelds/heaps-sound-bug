@@ -19,7 +19,7 @@
 			"label": "Serve dev version",
 			"type": "shell",
 			// Only watch a single file, otherwise it will reload for each file.
-			"command": "python -c 'import livereload.cli as l; l.main()' -p 8000 --host 0.0.0.0 -t build/game.js.map -w 1",
+			"command": "cd www; python -c 'import livereload.cli as l; l.main()' -p 8000 --host 0.0.0.0 -t www/build/game.js.map -w 1",
 			"presentation": {
 				"reveal": "always",
 				"panel": "new"

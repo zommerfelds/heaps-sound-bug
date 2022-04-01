@@ -11,4 +11,4 @@
 
 -D resourcesPath=./res/heaps
 -D analyzer-optimize
--js build/game.js
+-js www/build/game.js

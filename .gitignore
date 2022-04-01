@@ -1,9 +1,6 @@
-/build
-/build-android
+/www/build
+# Haxe res build tmp files:
 .tmp
-secret-*
-/save.sav
-/test/output
 
 # Krita backup files:
 *.kra~

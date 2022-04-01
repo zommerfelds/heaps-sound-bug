@@ -5,7 +5,7 @@ set -e
 
 function buildres() {
     haxe -hl hxd.fmt.pak.Build.hl -lib heaps -main hxd.fmt.pak.Build
-    hl hxd.fmt.pak.Build.hl -res res/heaps -out build/res
+    hl hxd.fmt.pak.Build.hl -res res/heaps -out www/build/res
 }
 
 function compiledev() {
