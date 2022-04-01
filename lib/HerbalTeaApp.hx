@@ -94,7 +94,7 @@ class HerbalTeaApp extends hxd.App {
 			cutout.left = Std.int(cutoutJs.left);
 			cutout.right = Std.int(cutoutJs.right);
 		}
-		trace("Loaded Android cutout: " + cutoutJs);
+		trace("Loaded Android cutout: " + cutout);
 
 		// Only for testing:
 		var startState = "main";
