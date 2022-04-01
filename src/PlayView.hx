@@ -142,6 +142,9 @@ class PlayView extends GameState {
 			ball.y = wallSize + ballSize * 0.5;
 			ballVel.y *= -1;
 			points += 1;
+			if (App.loadHighScore() < points) {
+				App.writeHighScore(points);
+			}
 			hxd.Res.blip.play();
 		}
 		if (ball.y + ballSize * 0.5 > paddle.y) {

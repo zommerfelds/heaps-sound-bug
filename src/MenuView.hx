@@ -23,8 +23,10 @@ class MenuView extends GameState {
 			App.instance.switchState(new PlayView());
 		}, Gui.Colors.BLUE, 0.8);
 
+		new Gui.Text("Highscore: " + App.loadHighScore(), centeringFlow, 0.8);
+
 		centeringFlow.addSpacing(Gui.scaleAsInt(100));
-		
+
 		new Gui.Text("version: " + hxd.Res.version.entry.getText(), centeringFlow, 0.5);
 	}
 }

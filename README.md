@@ -26,7 +26,6 @@ A small Heaps project template for web-based games.
 ## TODO
 
 * Add credits button
-* Add a save game template (e.g. highscore)
 * Easily support query params for debugging
 
 ## Random links for game jams
