@@ -11,7 +11,7 @@ function buildres() {
 # Alternative to the above if HashLink is not installed
 function buildres_py() {
     haxe -python pak.py -lib heaps -main hxd.fmt.pak.Build \
-    && mkdir build && python3 pak.py -res game/res/heaps -out build/res
+    && mkdir build && python3 pak.py -res res/heaps -out www/build/res
 }
 
 function compiledev() {
