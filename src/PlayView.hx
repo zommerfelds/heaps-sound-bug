@@ -85,6 +85,11 @@ class PlayView extends GameState {
 		setupGame();
 
 		addEventListener(onEvent);
+
+		final manager = hxd.snd.Manager.get();
+		manager.masterVolume = 0.5;
+		manager.masterChannelGroup.addEffect(new hxd.snd.effect.Reverb(hxd.snd.effect.ReverbPreset.DRUGGED));
+		manager.masterChannelGroup.addEffect(new hxd.snd.effect.Pitch(0.5));
 	}
 
 	function setupGame() {
@@ -102,6 +107,7 @@ class PlayView extends GameState {
 				if (state == WaitingForTouch) {
 					state = Playing;
 					setRandomBallVel();
+					hxd.Res.start.play();
 				}
 			default:
 		}
@@ -116,7 +122,7 @@ class PlayView extends GameState {
 	override function update(dt:Float) {
 		pointsText.text = "" + points;
 
-		if (state == WaitingForTouch)
+		if (state == WaitingForTouch || state == Dead)
 			return;
 
 		ball.x += ballVel.x * dt;
@@ -125,20 +131,24 @@ class PlayView extends GameState {
 		if (ball.x - ballSize * 0.5 < 0) {
 			ball.x = ballSize * 0.5;
 			ballVel.x *= -1;
+			final s = hxd.Res.blip.play();
 		}
 		if (ball.x + ballSize * 0.5 > playWidth) {
 			ball.x = playWidth - ballSize * 0.5;
 			ballVel.x *= -1;
+			hxd.Res.blip.play();
 		}
 		if (ball.y - ballSize * 0.5 < wallSize) {
 			ball.y = wallSize + ballSize * 0.5;
 			ballVel.y *= -1;
 			points += 1;
+			hxd.Res.blip.play();
 		}
 		if (ball.y + ballSize * 0.5 > paddle.y) {
 			if (state == Playing && ball.x + ballSize > paddle.x - paddleWidth / 2 && ball.x - ballSize < paddle.x + paddleWidth / 2) {
 				ball.y = paddle.y - ballSize * 0.5;
 				setRandomBallVel();
+				hxd.Res.blip.play();
 			} else {
 				state = MissedBall;
 			}
