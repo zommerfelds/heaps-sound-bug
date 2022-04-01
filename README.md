@@ -11,6 +11,7 @@ A small Heaps project template for web-based games.
 * Optional: install [Git LFS](https://git-lfs.github.com/)
   * `git lfs install` once on the repo to set up
 * Optional: install Visual Studio Code
+* Optional: enable GitHub pages in the repto settings (`/settings/pages`)
 
 ### Building
 
