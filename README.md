@@ -2,6 +2,8 @@
 
 A small Heaps project template for web-based games.
 
+[Live demo](https://zommerfelds.github.io/gamejam-template/)
+
 ## Instructions
 
 ### Setup
@@ -22,7 +24,6 @@ A small Heaps project template for web-based games.
 
 ## TODO
 
-* Automatically publish to GitHub pages
 * Add a save game template (e.g. highscore)
 * Add sound template
 * Add credits button
