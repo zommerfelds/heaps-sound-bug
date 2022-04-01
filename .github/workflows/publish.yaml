@@ -18,7 +18,7 @@ jobs:
           haxe-version: 4.2.5
 
       - name: Install dependencies 🎲
-        run: haxelib install build-js.hxml
+        run: yes | haxelib --quiet install build-js.hxml
       # Could add a actions/cache@v1 to speedup packages?
 
       - name: Build asset package 🎮
