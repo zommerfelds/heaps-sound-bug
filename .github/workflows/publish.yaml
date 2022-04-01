@@ -12,19 +12,19 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v3
 
-      - name: Setup Haxe
+      - name: Setup Haxe 🕹️
         uses: krdlab/setup-haxe@v1
         with:
           haxe-version: 4.2.5
 
-      - name: Install dependencies
-        run: haxelibe install build-js.hxml
+      - name: Install dependencies 🎲
+        run: haxelib install build-js.hxml
       # Could add a actions/cache@v1 to speedup packages?
 
-      - name: Build asset package
+      - name: Build asset package 🎮
         run: bash run buildres
 
-      - name: Compile
+      - name: Compile 🛠️
         run: bash run compile
 
       - name: Deploy 🚀
