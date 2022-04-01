@@ -22,7 +22,7 @@ jobs:
       # Could add a actions/cache@v1 to speedup packages?
 
       - name: Build asset package 🎮
-        run: bash run buildres
+        run: bash run buildres_py
 
       - name: Compile 🛠️
         run: bash run compile

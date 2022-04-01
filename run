@@ -8,6 +8,12 @@ function buildres() {
     hl hxd.fmt.pak.Build.hl -res res/heaps -out www/build/res
 }
 
+# Alternative to the above if HashLink is not installed
+function buildres_py() {
+    haxe -python pak.py -lib heaps -main hxd.fmt.pak.Build \
+    && mkdir build && python3 pak.py -res game/res/heaps -out build/res
+}
+
 function compiledev() {
     haxe -D source-map-content build-js.hxml
 }
