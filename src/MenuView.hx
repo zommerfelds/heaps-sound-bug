@@ -22,5 +22,9 @@ class MenuView extends GameState {
 		new Gui.TextButton(centeringFlow, "Start game", () -> {
 			App.instance.switchState(new PlayView());
 		}, Gui.Colors.BLUE, 0.8);
+
+		centeringFlow.addSpacing(Gui.scaleAsInt(100));
+		
+		new Gui.Text("version: " + hxd.Res.version.entry.getText(), centeringFlow, 0.5);
 	}
 }

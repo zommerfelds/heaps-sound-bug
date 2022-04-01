@@ -70,6 +70,8 @@ class HerbalTeaApp extends hxd.App {
 					case ".fnt":
 					// Texture file is already loaded via png. Actual font building can't be done
 					// since we don't know if it's a normal font or SDF. Skip this case.
+					case ".txt":
+					// No preloading needed.
 					case x:
 						throw 'Error loading resource "${node.name}" (unidentified type "$x")';
 				}

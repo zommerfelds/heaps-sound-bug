@@ -21,6 +21,9 @@ jobs:
         run: yes | haxelib --quiet install build-js.hxml
       # Could add a actions/cache@v1 to speedup packages?
 
+      - name: Write version
+        run: echo "$(git rev-parse --short HEAD) ($(date -d @$(git show -s --format=%ct HEAD) -I))" > res/heaps/version.txt
+
       - name: Build asset package 🎮
         run: bash run buildres_py
 
