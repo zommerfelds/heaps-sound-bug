@@ -9,23 +9,26 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="mobile-web-app-capable" content="yes" />
-    <style>
-        body,
-        html {
-            margin: 0;
-            padding: 0;
-            background-color: black;
-            width: 100%;
-            height: 100%;
-        }
-    </style>
 </head>
 
 <body>
     <!-- NOTE: the width and height style elements must be defined directly in the element
                below (not in a class) because otherwise Heaps doesn't resize the canvas properly. -->
-    <canvas id="webgl" style="width:100%;height:100%"></canvas>
+    <canvas id="webgl" style="width:350px;height:200px"></canvas>
+    <div>
+        <button onclick="play();">Play in JS</button>
+    </div>
+    <p>Code: <a href="https://github.com/zommerfelds/heaps-sound-bug">
+            https://github.com/zommerfelds/heaps-sound-bug
+        </a></p>
     <script src="build/game.js"></script>
+    <script>
+        var myAudio = new Audio('blip.wav');
+
+        function play() {
+            myAudio.play();
+        }
+    </script>
 </body>
 
 </html>
