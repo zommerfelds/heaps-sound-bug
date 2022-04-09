@@ -11,7 +11,7 @@ class App extends hxd.App {
 
 		final flow = new Flow(s2d);
 		flow.x = 50;
-		flow.y = 50;
+		flow.y = 30;
 		flow.backgroundTile = Tile.fromColor(0xff0000);
 		flow.padding = 20;
 		flow.enableInteractive = true;
@@ -22,6 +22,21 @@ class App extends hxd.App {
 
 		final tf = new h2d.Text(hxd.res.DefaultFont.get(), flow);
 		tf.scale(3);
-		tf.text = "Play in Heaps";
+		tf.text = "44.1 kHz";
+
+		final flow = new Flow(s2d);
+		flow.x = 50;
+		flow.y = 120;
+		flow.backgroundTile = Tile.fromColor(0x00ff00);
+		flow.padding = 20;
+		flow.enableInteractive = true;
+		flow.interactive.onClick = e -> {
+			trace("Playing sound");
+			hxd.Res.blip2.play();
+		};
+
+		final tf = new h2d.Text(hxd.res.DefaultFont.get(), flow);
+		tf.scale(3);
+		tf.text = "48 kHz";
 	}
 }

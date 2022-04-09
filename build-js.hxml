@@ -8,7 +8,7 @@
 # Get git version as of 2022-04-09:
 -lib heaps:git:https://github.com/HeapsIO/heaps#57c1bd34779193636562621faca5a875b2113923
 
--D resourcesPath=./res/heaps
+-D resourcesPath=./www/res
 
 -D js-source-map
 -D analyzer-optimize
