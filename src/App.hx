@@ -10,8 +10,8 @@ class App extends hxd.App {
 		hxd.Res.initEmbed();
 
 		final flow = new Flow(s2d);
-		flow.x = 100;
-		flow.y = 100;
+		flow.x = 50;
+		flow.y = 50;
 		flow.backgroundTile = Tile.fromColor(0xff0000);
 		flow.padding = 20;
 		flow.enableInteractive = true;
@@ -22,6 +22,6 @@ class App extends hxd.App {
 
 		final tf = new h2d.Text(hxd.res.DefaultFont.get(), flow);
 		tf.scale(3);
-		tf.text = "Play!";
+		tf.text = "Play in Heaps";
 	}
 }
