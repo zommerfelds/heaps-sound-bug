@@ -19,16 +19,9 @@ jobs:
 
       - name: Install dependencies 🎲
         run: yes | haxelib --quiet install build-js.hxml
-      # Could add a actions/cache@v1 to speedup packages?
-
-      - name: Write version 📝
-        run: echo "git-$(git rev-parse --short HEAD) ($(date -d @$(git show -s --format=%ct HEAD) -I))" > res/heaps/version.txt
-
-      #- name: Build asset package 🎮
-      #  run: bash run buildres_py
 
       - name: Compile 🛠️
-        run: bash run compile
+        run: haxe build-js.hxml
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.2.5
