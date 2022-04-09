@@ -22,7 +22,7 @@ class App extends hxd.App {
 
 		final tf = new h2d.Text(hxd.res.DefaultFont.get(), flow);
 		tf.scale(3);
-		tf.text = "44.1 kHz";
+		tf.text = "Bad file";
 
 		final flow = new Flow(s2d);
 		flow.x = 50;
@@ -37,6 +37,6 @@ class App extends hxd.App {
 
 		final tf = new h2d.Text(hxd.res.DefaultFont.get(), flow);
 		tf.scale(3);
-		tf.text = "48 kHz";
+		tf.text = "Good file";
 	}
 }
