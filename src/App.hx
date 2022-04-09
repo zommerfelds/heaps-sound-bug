@@ -1,20 +1,27 @@
-class App extends HerbalTeaApp {
-	public static var instance:App;
+import h2d.Tile;
+import h2d.Flow;
 
+class App extends hxd.App {
 	static function main() {
-		instance = new App();
+		new App();
 	}
 
-	override function onload() {
-		switchState(new MenuView());
-	}
+	override function init() {
+		hxd.Res.initEmbed();
 
-	// TODO: move this to HerbalTeaApp
-	public static function loadHighScore():Int {
-		return hxd.Save.load({highscore: 0}).highscore;
-	}
+		final flow = new Flow(s2d);
+		flow.x = 100;
+		flow.y = 100;
+		flow.backgroundTile = Tile.fromColor(0xff0000);
+		flow.padding = 20;
+		flow.enableInteractive = true;
+		flow.interactive.onClick = e -> {
+			trace("Playing sound");
+			hxd.Res.blip.play();
+		};
 
-	public static function writeHighScore(highscore:Int) {
-		hxd.Save.save({highscore: highscore});
+		final tf = new h2d.Text(hxd.res.DefaultFont.get(), flow);
+		tf.scale(3);
+		tf.text = "Play!";
 	}
 }
