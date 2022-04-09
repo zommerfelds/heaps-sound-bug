@@ -14,5 +14,5 @@
 -D analyzer-optimize
 -js www/build/game.js
 
-# -lib hlsdl
+#-lib hlsdl
 #-hl game.hl
